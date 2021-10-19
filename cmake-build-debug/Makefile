@@ -129,6 +129,54 @@ Newton_Raphson/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/build
 .PHONY : Newton_Raphson/fast
 
+Root.o: Root.cpp.o
+.PHONY : Root.o
+
+# target to build an object file
+Root.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Root.cpp.o
+.PHONY : Root.cpp.o
+
+Root.i: Root.cpp.i
+.PHONY : Root.i
+
+# target to preprocess a source file
+Root.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Root.cpp.i
+.PHONY : Root.cpp.i
+
+Root.s: Root.cpp.s
+.PHONY : Root.s
+
+# target to generate assembly for a file
+Root.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Root.cpp.s
+.PHONY : Root.cpp.s
+
+Scale.o: Scale.cpp.o
+.PHONY : Scale.o
+
+# target to build an object file
+Scale.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Scale.cpp.o
+.PHONY : Scale.cpp.o
+
+Scale.i: Scale.cpp.i
+.PHONY : Scale.i
+
+# target to preprocess a source file
+Scale.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Scale.cpp.i
+.PHONY : Scale.cpp.i
+
+Scale.s: Scale.cpp.s
+.PHONY : Scale.s
+
+# target to generate assembly for a file
+Scale.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Scale.cpp.s
+.PHONY : Scale.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -162,6 +210,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Newton_Raphson"
+	@echo "... Root.o"
+	@echo "... Root.i"
+	@echo "... Root.s"
+	@echo "... Scale.o"
+	@echo "... Scale.i"
+	@echo "... Scale.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
