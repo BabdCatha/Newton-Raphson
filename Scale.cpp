@@ -4,10 +4,12 @@
 
 #include "Scale.h"
 
-Scale::Scale(std::complex<double> cent, double w, double h) {
+Scale::Scale(std::complex<double> cent, double w, double h, int screenWidth, int screenHeight) {
 	center = cent;
 	width = w;
 	height = h;
+	this->screenWidth = screenWidth;
+	this->screenHeight = screenHeight;
 }
 
 const std::complex<double> &Scale::getCenter() const {

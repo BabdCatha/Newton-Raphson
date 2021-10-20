@@ -8,5 +8,5 @@ if(SFML_FOUND)
     message(STATUS "SFML VERSION: ${SFML_VERSION}")
 endif()
 
-add_executable(Newton_Raphson main.cpp Root.cpp Root.h Scale.cpp Scale.h)
+add_executable(Newton_Raphson main.cpp Root.cpp Root.h Scale.cpp Scale.h Polynomial.cpp Polynomial.h)
 target_link_libraries (Newton_Raphson sfml-graphics sfml-window sfml-system)

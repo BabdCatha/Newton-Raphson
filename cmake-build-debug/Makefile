@@ -129,6 +129,30 @@ Newton_Raphson/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/build
 .PHONY : Newton_Raphson/fast
 
+Polynomial.o: Polynomial.cpp.o
+.PHONY : Polynomial.o
+
+# target to build an object file
+Polynomial.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Polynomial.cpp.o
+.PHONY : Polynomial.cpp.o
+
+Polynomial.i: Polynomial.cpp.i
+.PHONY : Polynomial.i
+
+# target to preprocess a source file
+Polynomial.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Polynomial.cpp.i
+.PHONY : Polynomial.cpp.i
+
+Polynomial.s: Polynomial.cpp.s
+.PHONY : Polynomial.s
+
+# target to generate assembly for a file
+Polynomial.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Polynomial.cpp.s
+.PHONY : Polynomial.cpp.s
+
 Root.o: Root.cpp.o
 .PHONY : Root.o
 
@@ -210,6 +234,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Newton_Raphson"
+	@echo "... Polynomial.o"
+	@echo "... Polynomial.i"
+	@echo "... Polynomial.s"
 	@echo "... Root.o"
 	@echo "... Root.i"
 	@echo "... Root.s"

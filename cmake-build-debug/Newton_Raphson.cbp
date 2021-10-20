@@ -82,6 +82,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.cpp">
+			<Option target="Newton_Raphson"/>
+		</Unit>
+		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.h">
+			<Option target="Newton_Raphson"/>
+		</Unit>
 		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.cpp">
 			<Option target="Newton_Raphson"/>
 		</Unit>

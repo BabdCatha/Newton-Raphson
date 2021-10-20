@@ -23,7 +23,7 @@ public:
 	double getHeight() const;
 	double getScreenWidth() const;
 	double getScreenHeight() const;
-	Scale(std::complex<double> cent, double w, double h);
+	Scale(std::complex<double> cent, double w, double h, int screenWidth, int screenHeight);
 };
 
 #endif //NEWTON_RAPHSON_SCALE_H

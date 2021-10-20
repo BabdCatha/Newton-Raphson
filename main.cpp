@@ -4,6 +4,7 @@
 
 #include "Root.h"
 #include "Scale.h"
+#include "Polynomial.h"
 
 #define SCREEN_WIDTH 1920
 #define SCREEN_HEIGHT 1080
@@ -29,8 +30,15 @@ int main(){
 	backgroundSprite.setTexture(backgroundTexture);
 
 	//Creating the current scale
-	Scale currentScale(0, 1, 1);
-	Root z1(50, 50, currentScale, &window);
+	Scale currentScale(0, 1, 1, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+	//Test variables
+	Root z1(960, 540, currentScale, &window);
+	Root z2(100, 100, currentScale, &window);
+
+	Root liste[] = {z1, z2};
+
+	Polynomial P(2, liste);
 
 	bool isLeftMouseButtonPressed = false;
 
@@ -42,30 +50,17 @@ int main(){
 				window.close();
 
 			//If the user performs a left click, we set up the corresponding flag in the selected root, if any
-			//They first return a boolean indicating whether they are the one that was pressed. This is used to make
-			//sure that when the mouse is over several roots, only one is moved at any time.
 			if(event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left){
-				isLeftMouseButtonPressed = true;
-
-				//TODO: make it usable with a polynomial
-				if(z1.overlaps(event.mouseButton.x, event.mouseButton.y)){
-					z1.setSelected(true);
-				}
+				P.leftMouseButtonPressed(event);
 			}
 			//If the user releases the left mouse button, we clear the corresponding flag
 			if(event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left){
-				isLeftMouseButtonPressed = false;
-				//We release every root
-				if(z1.isSelected()){
-					z1.setSelected(false);
-				}
+				P.leftMouseButtonReleased();
 			}
 
 			//If the mouse moves while the left mouse button is pressed, we make each root handle the movement
-			if(event.type == sf::Event::MouseMoved && isLeftMouseButtonPressed){
-				if(z1.isSelected()){
-					z1.updatePosition(event.mouseMove.x, event.mouseMove.y);
-				}
+			if(event.type == sf::Event::MouseMoved && P.getIsLeftMouseButtonPressed()){
+				P.update(event);
 			}
 		}
 
@@ -76,7 +71,7 @@ int main(){
 		window.draw(backgroundSprite);
 
 		//This is where the roots should be drawn
-		z1.draw();
+		P.drawRoots();
 
 		//Once all the modifications have been done, the window is drawn again
 		window.display();
