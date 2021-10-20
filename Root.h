@@ -33,7 +33,6 @@ public:
 	void setSelected(bool n_selected);
 	Root(int coordX, int coordY, const Scale &scale, sf::RenderWindow * window);
 	Root();
-	~Root();
 	void draw();
 	std::complex<double> getValue();
 	bool overlaps(int e_x, int e_y) const;

@@ -15,8 +15,9 @@ private:
 	int degree;
 	Root * roots;
 	std::complex<double> * coefficients;
-	void computeCoefficients();
 	bool isLeftMouseButtonPressed = false;
+
+	void computeCoefficients();
 public:
 	Polynomial(int degree, Root * rootsList);
 	std::complex<double> evaluate(std::complex<double> x);

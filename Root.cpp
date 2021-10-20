@@ -28,10 +28,6 @@ Root::Root() : scale(0, 1, 1, 1920, 1080){
 	selected = false;
 }
 
-Root::~Root() {
-
-}
-
 void Root::draw() {
 	window->draw(sprite);
 }
@@ -64,7 +60,7 @@ std::complex<double> Root::getValue() {
 
 std::complex<double> Root::XYtoComplex(int x, int y) {
 	std::complex<double> res = scale.getCenter();
-	res += (coordX - (scale.getScreenWidth() / 2)) * (2 * (double)scale.getWidth() / (double)scale.getScreenWidth());
-	res += 1i * ((scale.getScreenHeight() / 2) - coordY) * (2 * (double)scale.getHeight() / (double)scale.getScreenHeight());
+	res += (x - (scale.getScreenWidth() / 2)) * (2 * (double)scale.getWidth() / (double)scale.getScreenWidth());
+	res += 1i * ((scale.getScreenHeight() / 2) - y) * (2 * (double)scale.getHeight() / (double)scale.getScreenHeight());
 	return res;
 }

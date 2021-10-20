@@ -10,6 +10,9 @@
 #define SCREEN_HEIGHT 1080
 #define MAX_FRAMERATE 60
 
+#define NUMBER_OF_ITERATIONS 1
+#define BASE_DEGREE 3
+
 int main(){
 	//Creating the main windows, in fullscreen WUXGA- mode
 	sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Newton-Raphson fractal", sf::Style::Fullscreen);
@@ -40,14 +43,13 @@ int main(){
 
 	Polynomial P(2, liste);
 
-	bool isLeftMouseButtonPressed = false;
-
 	while(window.isOpen()){
 		sf::Event event{};
 		while(window.pollEvent(event)){
 			//If the user quits the app, we close it
-			if(event.type == sf::Event::Closed)
+			if(event.type == sf::Event::Closed) {
 				window.close();
+			}
 
 			//If the user performs a left click, we set up the corresponding flag in the selected root, if any
 			if(event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left){

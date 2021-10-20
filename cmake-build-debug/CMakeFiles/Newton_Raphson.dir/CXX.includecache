@@ -6,12 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.cpp
-iostream
--
-Polynomial.h
-/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.h
-
 /media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.h
 Root.h
 /media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.h
@@ -29,4 +23,18 @@ Scale.h
 /media/cyril/Disque local/Bidouillage/Newton-Raphson/Scale.h
 complex
 -
+
+/media/cyril/Disque local/Bidouillage/Newton-Raphson/main.cpp
+SFML/Graphics.hpp
+-
+SFML/Window.hpp
+-
+iostream
+-
+Root.h
+/media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.h
+Scale.h
+/media/cyril/Disque local/Bidouillage/Newton-Raphson/Scale.h
+Polynomial.h
+/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.h
 

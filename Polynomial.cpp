@@ -12,7 +12,7 @@ Polynomial::Polynomial(int degree, Root * rootsList) {
 		roots[i] = rootsList[i];
 	}
 	coefficients = new std::complex<double>[degree+1];
-	//computeCoefficients();
+	computeCoefficients();
 }
 
 std::complex<double> Polynomial::evaluate(std::complex<double> x) {
@@ -44,12 +44,12 @@ void Polynomial::computeCoefficients(){
 
 	for(int i = 1; i < degree; i++){
 
-		for(int j = degree; j >= 1; j--){
+		for(int j = 1; j < degree+1 ; j++){
 			tempList[j] = coefficients[j-1];
 		}
 		tempList[0] = 0;
 
-		for(int j = degree+1; j >= 0; j--){
+		for(int j = 0; j < degree+1; j++){
 			coefficients[j] *= (double)-1*roots[i].getValue();
 			coefficients[j] += tempList[j];
 		}
