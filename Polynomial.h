@@ -27,6 +27,7 @@ public:
 	void leftMouseButtonReleased();
 	void update(sf::Event event);
 	void drawRoots();
+	sf::Color findClosestRootColor(std::complex<double> z);
 };
 
 #endif //NEWTON_RAPHSON_POLYNOMIAL_H

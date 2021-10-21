@@ -100,3 +100,23 @@ void Polynomial::drawRoots() {
 		roots[i].draw();
 	}
 }
+
+sf::Color Polynomial::findClosestRootColor(std::complex<double> z){
+	double dist = HUGE_VAL;
+	sf::Color res;
+	for(int i = 0; i < degree; i++){
+		double new_dist = std::abs(z - roots[i].getValue());
+		if(new_dist < dist){
+			dist = new_dist;
+			res = roots[i].getRootColor();
+		}
+	}
+
+	//Variable to be adjusted to make sure that the value is actually close to the root
+	if(dist > 100.0){
+		res = sf::Color::Black;
+	}
+
+	return res;
+
+}
