@@ -17,6 +17,19 @@ Root::Root(int coordX, int coordY, const Scale &scale, sf::RenderWindow * window
 	selected = false;
 }
 
+Root::Root(std::complex<double> z, const Scale &scale, sf::RenderWindow * window, sf::Color color) : scale(scale){
+	value = z;
+	int * res = complextoXY(z, this->scale);
+	coordX = res[0];
+	coordY = res[1];
+	this->window = window;
+	sprite = sf::CircleShape(ROOT_RADIUS);
+	rootColor = color;
+	sprite.setPosition((float)coordX, (float)coordY);
+	sprite.setFillColor(sf::Color::Blue);
+	selected = false;
+}
+
 Root::Root() : scale(0, 1, 1, 1920, 1080){
 	value = 0;
 	coordX = 0;
@@ -68,4 +81,12 @@ std::complex<double> Root::XYtoComplex(int x, int y) {
 
 sf::Color Root::getRootColor() {
 	return rootColor;
+}
+
+int * Root::complextoXY(std::complex<double> z, Scale &scale){
+	int * res = (int*)malloc(2*sizeof(int));
+	res[0] = ((z.real()/scale.getWidth())*scale.getScreenWidth()) + scale.getScreenWidth()/2;
+	res[1] = ((z.imag()/scale.getHeight())*scale.getScreenHeight()) + scale.getScreenHeight()/2;
+
+	return res;
 }

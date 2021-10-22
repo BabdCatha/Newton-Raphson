@@ -28,12 +28,13 @@ private:
 	sf::CircleShape sprite;
 	bool selected;
 	sf::Color rootColor;
-
+	int * complextoXY(std::complex<double> z, Scale &scale);
 	std::complex<double> XYtoComplex(int x, int y);
 public:
 	bool isSelected() const;
 	void setSelected(bool n_selected);
 	Root(int coordX, int coordY, const Scale &scale, sf::RenderWindow * window, sf::Color color);
+	Root(std::complex<double> z, const Scale &scale, sf::RenderWindow * window, sf::Color color);
 	Root();
 	void draw();
 	std::complex<double> getValue();

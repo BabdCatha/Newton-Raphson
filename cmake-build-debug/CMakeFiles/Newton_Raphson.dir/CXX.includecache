@@ -16,6 +16,12 @@ Polynomial.h
 Root.h
 /media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.h
 
+/media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.cpp
+iostream
+-
+Root.h
+/media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.h
+
 /media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.h
 complex
 -
@@ -29,4 +35,20 @@ Scale.h
 /media/cyril/Disque local/Bidouillage/Newton-Raphson/Scale.h
 complex
 -
+
+/media/cyril/Disque local/Bidouillage/Newton-Raphson/main.cpp
+SFML/Graphics.hpp
+-
+SFML/Window.hpp
+-
+iostream
+-
+complex
+-
+Root.h
+/media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.h
+Scale.h
+/media/cyril/Disque local/Bidouillage/Newton-Raphson/Scale.h
+Polynomial.h
+/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.h
 

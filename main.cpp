@@ -18,7 +18,6 @@ std::complex<double> complexScreen[SCREEN_WIDTH][SCREEN_HEIGHT];
 sf::Color screen[SCREEN_WIDTH][SCREEN_HEIGHT];
 
 std::complex<double> XYtoComplex(int x, int y, Scale &scale);
-int * complextoXY(std::complex<double> z, Scale &scale);
 void initScreen(Scale &scale);
 void getColorMap(Polynomial &P);
 void updateBackgroundImage(sf::Image &image);
@@ -48,14 +47,10 @@ int main(){
 	//Creating the current scale
 	Scale currentScale(0, 1*5, 1*2.8125, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-	int * r1 = complextoXY(1, currentScale);
-	int * r2 = complextoXY(std::exp(1i*3.1415926535/1.5), currentScale);
-	int * r3 = complextoXY(std::exp(1i*3.1415926535/0.75), currentScale);
-
 	//Test variables
-	Root z1(r1[0], r1[1], currentScale, &window, sf::Color(97, 20, 15));
-	Root z2(r2[0], r2[1], currentScale, &window, sf::Color(49, 97, 15));
-	Root z3(r3[0], r3[1], currentScale, &window, sf::Color(15, 89, 97));
+	Root z1(1, currentScale, &window, sf::Color(97, 20, 15));
+	Root z2(std::exp(1i*3.14159265358979/1.5), currentScale, &window, sf::Color(49, 97, 15));
+	Root z3(std::exp(1i*3.14159265358979/0.75), currentScale, &window, sf::Color(15, 89, 97));
 	Root z4(100, 400, currentScale, &window, sf::Color(61, 15, 97));
 	Root z5(100, 500, currentScale, &window, sf::Color(97, 15, 72));
 
@@ -149,12 +144,4 @@ void performNewtonStep(Polynomial &P){
 			std::complex<double> alpha = complexScreen[i][j];
 			complexScreen[i][j] -= (P.evaluate(alpha)/P.evaluate_derivative(alpha));
 		}
-}
-
-int * complextoXY(std::complex<double> z, Scale &scale){
-	int * res = (int*)malloc(2*sizeof(int));
-	res[0] = ((z.real()/scale.getWidth())*scale.getScreenWidth()) + scale.getScreenWidth()/2;
-	res[1] = ((z.imag()/scale.getHeight())*scale.getScreenHeight()) + scale.getScreenHeight()/2;
-
-	return res;
 }
