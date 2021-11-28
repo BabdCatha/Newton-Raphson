@@ -5,10 +5,10 @@
 //It is therefore represented at first in a factorized way. It is expanded in the computeCoefficients method, in order
 //to simplify the calculation and evaluation of its derivative.
 
-#ifndef NEWTON_RAPHSON_POLYNOMIAL_H
-#define NEWTON_RAPHSON_POLYNOMIAL_H
+#ifndef NEWTON_RAPHSON_POLYNOMIAL_CUH
+#define NEWTON_RAPHSON_POLYNOMIAL_CUH
 
-#include "Root.h"
+#include "Root.cuh"
 
 class Polynomial {
 private:
@@ -30,4 +30,4 @@ public:
 	sf::Color findClosestRootColor(std::complex<double> z);
 };
 
-#endif //NEWTON_RAPHSON_POLYNOMIAL_H
+#endif //NEWTON_RAPHSON_POLYNOMIAL_CUH

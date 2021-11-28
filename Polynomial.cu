@@ -3,7 +3,7 @@
 //
 
 #include <iostream>
-#include "Polynomial.h"
+#include "Polynomial.cuh"
 
 Polynomial::Polynomial(int degree, Root * rootsList) {
 	this->degree = degree;
@@ -105,7 +105,8 @@ sf::Color Polynomial::findClosestRootColor(std::complex<double> z){
 	double dist = HUGE_VAL;
 	sf::Color res;
 	for(int i = 0; i < degree; i++){
-		double new_dist = std::abs(z - roots[i].getValue());
+		//double new_dist = std::abs(z - roots[i].getValue());
+		double new_dist = (z.real() - roots[i].getValue().real())*(z.real() - roots[i].getValue().real()) + (z.imag() - roots[i].getValue().imag())*(z.imag() - roots[i].getValue().imag());
 		if(new_dist < dist){
 			dist = new_dist;
 			res = roots[i].getRootColor();
