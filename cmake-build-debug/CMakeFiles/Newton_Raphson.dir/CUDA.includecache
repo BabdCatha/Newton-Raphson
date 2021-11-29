@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/media/cyril/Disque local/Bidouillage/Newton-Raphson/CUDA_functions.cu
-CUDA_functions.cuh
-/media/cyril/Disque local/Bidouillage/Newton-Raphson/CUDA_functions.cuh
-
 /media/cyril/Disque local/Bidouillage/Newton-Raphson/CUDA_functions.cuh
 complex
 -
@@ -22,19 +18,7 @@ Scale.cuh
 Polynomial.cuh
 /media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.cuh
 
-/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.cu
-iostream
--
-Polynomial.cuh
 /media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.cuh
-
-/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.cuh
-Root.cuh
-/media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.cuh
-
-/media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.cu
-iostream
--
 Root.cuh
 /media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.cuh
 
@@ -45,10 +29,6 @@ SFML/Window.hpp
 -
 SFML/Graphics.hpp
 -
-Scale.cuh
-/media/cyril/Disque local/Bidouillage/Newton-Raphson/Scale.cuh
-
-/media/cyril/Disque local/Bidouillage/Newton-Raphson/Scale.cu
 Scale.cuh
 /media/cyril/Disque local/Bidouillage/Newton-Raphson/Scale.cuh
 
@@ -62,6 +42,8 @@ SFML/Graphics.hpp
 SFML/Window.hpp
 -
 cuComplex.h
+-
+c++/10/iostream
 -
 Root.cuh
 /media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.cuh

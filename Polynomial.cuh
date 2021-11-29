@@ -14,20 +14,22 @@ class Polynomial {
 private:
 	int degree;
 	Root * roots;
-	std::complex<double> * coefficients;
+	cuDoubleComplex * coefficients;
 	bool isLeftMouseButtonPressed = false;
 
 	void computeCoefficients();
 public:
 	Polynomial(int degree, Root * rootsList);
-	std::complex<double> evaluate(std::complex<double> x);
-	std::complex<double> evaluate_derivative(std::complex<double> x);
+	__device__
+	void evaluate(cuDoubleComplex x, cuDoubleComplex *res);
+	__device__
+	void evaluate_derivative(cuDoubleComplex x, cuDoubleComplex *res);
 	bool getIsLeftMouseButtonPressed() const;
 	void leftMouseButtonPressed(sf::Event event);
 	void leftMouseButtonReleased();
 	void update(sf::Event event);
 	void drawRoots();
-	sf::Color findClosestRootColor(std::complex<double> z);
+	sf::Color findClosestRootColor(cuDoubleComplex z);
 };
 
 #endif //NEWTON_RAPHSON_POLYNOMIAL_CUH

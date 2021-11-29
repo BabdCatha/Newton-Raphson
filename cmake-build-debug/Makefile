@@ -129,30 +129,6 @@ Newton_Raphson/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/build
 .PHONY : Newton_Raphson/fast
 
-CUDA_functions.o: CUDA_functions.cu.o
-.PHONY : CUDA_functions.o
-
-# target to build an object file
-CUDA_functions.cu.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/CUDA_functions.cu.o
-.PHONY : CUDA_functions.cu.o
-
-CUDA_functions.i: CUDA_functions.cu.i
-.PHONY : CUDA_functions.i
-
-# target to preprocess a source file
-CUDA_functions.cu.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/CUDA_functions.cu.i
-.PHONY : CUDA_functions.cu.i
-
-CUDA_functions.s: CUDA_functions.cu.s
-.PHONY : CUDA_functions.s
-
-# target to generate assembly for a file
-CUDA_functions.cu.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/CUDA_functions.cu.s
-.PHONY : CUDA_functions.cu.s
-
 Polynomial.o: Polynomial.cu.o
 .PHONY : Polynomial.o
 
@@ -258,9 +234,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Newton_Raphson"
-	@echo "... CUDA_functions.o"
-	@echo "... CUDA_functions.i"
-	@echo "... CUDA_functions.s"
 	@echo "... Polynomial.o"
 	@echo "... Polynomial.i"
 	@echo "... Polynomial.s"

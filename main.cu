@@ -1,12 +1,11 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <cuComplex.h>
+#include <c++/10/iostream>
 
 #include "Root.cuh"
 #include "Scale.cuh"
 #include "Polynomial.cuh"
-
-#include "CUDA_functions.cuh"
 
 #define SCREEN_WIDTH 1920
 #define SCREEN_HEIGHT 1080
@@ -18,17 +17,21 @@
 //sf::Color screen[SCREEN_WIDTH][SCREEN_HEIGHT];
 
 cuDoubleComplex XYtoComplex(int x, int y, Scale &scale);
-void initScreen(Scale &scale, cuDoubleComplex ***complexScreen);
-void getColorMap(Polynomial *P, cuDoubleComplex ***complexScreen, sf::Image *image, int X1, int X2, int Y1, int Y2);
+void initScreen(Scale &scale, cuDoubleComplex **complexScreen);
+void getColorMap(Polynomial *P, cuDoubleComplex **complexScreen, sf::Image *image);
 
 __global__
-void performNewtonStep(Polynomial *P, cuDoubleComplex ***complexScreen, int X1, int X2, int Y1, int Y2);
+void performNewtonStep(Polynomial *P, cuDoubleComplex **complexScreen);
 
 int main(){
 
 	//Creating the complex screen, and making it accessible to the device
-	cuDoubleComplex *** complexScreen;
-	cudaMallocManaged(&complexScreen, SCREEN_WIDTH*SCREEN_HEIGHT*sizeof(std::complex<double>));
+	cuDoubleComplex ** complexScreen;
+	//cudaMallocManaged(&complexScreen, SCREEN_WIDTH*SCREEN_HEIGHT*sizeof(std::complex<double>));
+	cudaMallocManaged(&complexScreen, SCREEN_WIDTH*sizeof(cuDoubleComplex*));
+	for(int i = 0; i < SCREEN_WIDTH; i++){
+		cudaMallocManaged(&complexScreen[i], SCREEN_HEIGHT*sizeof(cuDoubleComplex));
+	}
 
 	//Creating the main window, in fullscreen WUXGA- mode
 	sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Newton-Raphson fractal", sf::Style::Fullscreen);
@@ -92,9 +95,13 @@ int main(){
 
 				for(int i = 0; i < NUMBER_OF_ITERATIONS; i++){
 
-					performNewtonStep<<<1,1>>>(P, complexScreen, 0, 1920, 0, 1080);
+					performNewtonStep<<<1,1>>>(P, complexScreen);
 
-					getColorMap(P, complexScreen, &backgroundImage, 0, 1920, 0, 1080);
+					cudaDeviceSynchronize();
+
+					std::cout << i << std::endl;
+
+					getColorMap(P, complexScreen, &backgroundImage);
 					backgroundTexture.update(backgroundImage);
 
 					//Drawing the background image
@@ -136,25 +143,33 @@ cuDoubleComplex XYtoComplex(int x, int y, Scale &scale) {
 	return res;
 }
 
-void initScreen(Scale &scale, cuDoubleComplex ***complexScreen){
+void initScreen(Scale &scale, cuDoubleComplex **complexScreen){
 	for (int i = 0; i < SCREEN_WIDTH; i++)
 		for (int j = 0; j < SCREEN_HEIGHT; j++) {
-			*complexScreen[i][j] = XYtoComplex(i, j, scale);
+			complexScreen[i][j] = XYtoComplex(i, j, scale);
 		}
 }
 
-void getColorMap(Polynomial *P, cuDoubleComplex ***complexScreen, sf::Image *image, int X1, int X2, int Y1, int Y2){
-	for (int i = X1; i < X2; i++)
-		for (int j = Y1; j < Y2; j++) {
-			image->setPixel(i, j, P->findClosestRootColor(*complexScreen[i][j]));
+void getColorMap(Polynomial *P, cuDoubleComplex **complexScreen, sf::Image *image){
+	for (int i = 0; i < SCREEN_WIDTH; i++)
+		for (int j = 0; j < SCREEN_HEIGHT; j++) {
+			image->setPixel(i, j, P->findClosestRootColor(complexScreen[i][j]));
 		}
 }
 
 __global__
-void performNewtonStep(Polynomial *P, cuDoubleComplex ***complexScreen, int X1, int X2, int Y1, int Y2){
+void performNewtonStep(Polynomial *P, cuDoubleComplex **complexScreen){
 	for (int i = 0; i < SCREEN_WIDTH; i++)
 		for (int j = 0; j < SCREEN_HEIGHT; j++) {
-			cuDoubleComplex alpha = *complexScreen[i][j];
-			*complexScreen[i][j] -= (P->evaluate(alpha)/P->evaluate_derivative(alpha));
+			cuDoubleComplex alpha = complexScreen[i][j];
+
+			cuDoubleComplex val;
+			P->evaluate(alpha, &val);
+
+			cuDoubleComplex valD;
+			P->evaluate_derivative(alpha, &valD);
+
+			complexScreen[i][j] = cuCsub(complexScreen[i][j], cuCdiv(val, valD));
+			//*complexScreen[i][j] -= (P->evaluate(alpha)/P->evaluate_derivative(alpha));
 		}
 }

@@ -84,12 +84,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/CUDA_functions.cu">
-			<Option target="Newton_Raphson"/>
-		</Unit>
-		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/CUDA_functions.cuh">
-			<Option target="Newton_Raphson"/>
-		</Unit>
 		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.cu">
 			<Option target="Newton_Raphson"/>
 		</Unit>
@@ -106,9 +100,6 @@
 			<Option target="Newton_Raphson"/>
 		</Unit>
 		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/Scale.cuh">
-			<Option target="Newton_Raphson"/>
-		</Unit>
-		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/getColorMap.cuh">
 			<Option target="Newton_Raphson"/>
 		</Unit>
 		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/main.cu">
