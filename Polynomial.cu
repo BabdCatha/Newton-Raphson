@@ -26,7 +26,8 @@ Polynomial::Polynomial(int degree, Root * rootsList) {
 	for(int i = 0; i < degree; i++){
 		roots[i] = rootsList[i];
 	}
-	coefficients = new cuDoubleComplex[degree+1];
+	//coefficients = new cuDoubleComplex[degree+1];
+	cudaMallocManaged(&coefficients, (degree+1)*sizeof(cuDoubleComplex));
 	computeCoefficients();
 }
 

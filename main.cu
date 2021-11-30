@@ -28,9 +28,9 @@ int main(){
 	//Creating the complex screen, and making it accessible to the device
 	cuDoubleComplex ** complexScreen;
 	//cudaMallocManaged(&complexScreen, SCREEN_WIDTH*SCREEN_HEIGHT*sizeof(std::complex<double>));
-	cudaMallocManaged(&complexScreen, SCREEN_WIDTH*sizeof(cuDoubleComplex*));
+	cudaMallocManaged(&complexScreen, SCREEN_WIDTH*sizeof(cuDoubleComplex&));
 	for(int i = 0; i < SCREEN_WIDTH; i++){
-		cudaMallocManaged(&complexScreen[i], SCREEN_HEIGHT*sizeof(cuDoubleComplex));
+		cudaMallocManaged(&(complexScreen[i]), SCREEN_HEIGHT*sizeof(cuDoubleComplex));
 	}
 
 	//Creating the main window, in fullscreen WUXGA- mode
@@ -96,10 +96,18 @@ int main(){
 				for(int i = 0; i < NUMBER_OF_ITERATIONS; i++){
 
 					performNewtonStep<<<1,1>>>(P, complexScreen);
-
 					cudaDeviceSynchronize();
 
-					std::cout << i << std::endl;
+					std::cout << cuCreal(complexScreen[0][0]) << " +i" << cuCimag(complexScreen[0][0]) << std::endl;
+
+					cudaError err = cudaGetLastError();
+					if (err != cudaSuccess){
+						std::cout << "CUDA error: " << cudaGetErrorString(err) << std::endl;
+						return 0;
+					}
+
+
+					//std::cout << i << std::endl;
 
 					getColorMap(P, complexScreen, &backgroundImage);
 					backgroundTexture.update(backgroundImage);
@@ -159,17 +167,37 @@ void getColorMap(Polynomial *P, cuDoubleComplex **complexScreen, sf::Image *imag
 
 __global__
 void performNewtonStep(Polynomial *P, cuDoubleComplex **complexScreen){
+
+	unsigned int id = threadIdx.x;
+	unsigned int stride = blockDim.x;
+
+	/*for(unsigned int i = id; i < SCREEN_WIDTH*SCREEN_HEIGHT; i+=stride){
+		unsigned int x = i%SCREEN_WIDTH;
+		unsigned int y = i/SCREEN_HEIGHT;
+
+		cuDoubleComplex alpha = complexScreen[x][y];
+
+		cuDoubleComplex val = make_cuDoubleComplex(0, 0);
+		P->evaluate(alpha, &val);  //CRASHES
+
+		cuDoubleComplex valD = make_cuDoubleComplex(0, 0);
+		P->evaluate_derivative(alpha, &valD); //CRASHES
+
+		complexScreen[x][y] = cuCsub(complexScreen[x][y], cuCdiv(val, valD));  //CRASHES
+	}*/
+
 	for (int i = 0; i < SCREEN_WIDTH; i++)
 		for (int j = 0; j < SCREEN_HEIGHT; j++) {
 			cuDoubleComplex alpha = complexScreen[i][j];
 
-			cuDoubleComplex val;
-			P->evaluate(alpha, &val);
+			cuDoubleComplex val = make_cuDoubleComplex(0, 0);
+			P->evaluate(alpha, &val);  //CRASHES
 
-			cuDoubleComplex valD;
-			P->evaluate_derivative(alpha, &valD);
+			cuDoubleComplex valD = make_cuDoubleComplex(0, 0);
+			P->evaluate_derivative(alpha, &valD); //CRASHES
 
-			complexScreen[i][j] = cuCsub(complexScreen[i][j], cuCdiv(val, valD));
-			//*complexScreen[i][j] -= (P->evaluate(alpha)/P->evaluate_derivative(alpha));
+			complexScreen[i][j] = cuCsub(complexScreen[i][j], cuCdiv(val, valD));  //CRASHES
+
+			//-----*complexScreen[i][j] -= (P->evaluate(alpha)/P->evaluate_derivative(alpha));
 		}
 }
