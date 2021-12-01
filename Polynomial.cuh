@@ -20,10 +20,8 @@ private:
 	void computeCoefficients();
 public:
 	Polynomial(int degree, Root * rootsList);
-	__device__
-	void evaluate(cuDoubleComplex x, cuDoubleComplex *res);
-	__device__
-	void evaluate_derivative(cuDoubleComplex x, cuDoubleComplex *res);
+	__device__ void evaluate(cuDoubleComplex x, cuDoubleComplex *res);
+	__device__ void evaluate_derivative(cuDoubleComplex x, cuDoubleComplex *res);
 	bool getIsLeftMouseButtonPressed() const;
 	void leftMouseButtonPressed(sf::Event event);
 	void leftMouseButtonReleased();

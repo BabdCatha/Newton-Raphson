@@ -19,9 +19,7 @@
 cuDoubleComplex XYtoComplex(int x, int y, Scale &scale);
 void initScreen(Scale &scale, cuDoubleComplex **complexScreen);
 void getColorMap(Polynomial *P, cuDoubleComplex **complexScreen, sf::Image *image);
-
-__global__
-void performNewtonStep(Polynomial *P, cuDoubleComplex **complexScreen);
+__global__ void performNewtonStep(Polynomial *P, cuDoubleComplex **complexScreen);
 
 int main(){
 
@@ -95,10 +93,8 @@ int main(){
 
 				for(int i = 0; i < NUMBER_OF_ITERATIONS; i++){
 
-					performNewtonStep<<<1,1>>>(P, complexScreen);
+					performNewtonStep<<<1,256>>>(P, complexScreen);
 					cudaDeviceSynchronize();
-
-					std::cout << cuCreal(complexScreen[0][0]) << " +i" << cuCimag(complexScreen[0][0]) << std::endl;
 
 					cudaError err = cudaGetLastError();
 					if (err != cudaSuccess){
@@ -168,12 +164,12 @@ void getColorMap(Polynomial *P, cuDoubleComplex **complexScreen, sf::Image *imag
 __global__
 void performNewtonStep(Polynomial *P, cuDoubleComplex **complexScreen){
 
-	unsigned int id = threadIdx.x;
-	unsigned int stride = blockDim.x;
+	unsigned int index = blockIdx.x * blockDim.x + threadIdx.x;
+	unsigned int stride = blockDim.x * gridDim.x;
 
-	/*for(unsigned int i = id; i < SCREEN_WIDTH*SCREEN_HEIGHT; i+=stride){
+	for(unsigned int i = index; i < SCREEN_WIDTH*SCREEN_HEIGHT; i += stride){
 		unsigned int x = i%SCREEN_WIDTH;
-		unsigned int y = i/SCREEN_HEIGHT;
+		unsigned int y = i/SCREEN_WIDTH;
 
 		cuDoubleComplex alpha = complexScreen[x][y];
 
@@ -184,9 +180,9 @@ void performNewtonStep(Polynomial *P, cuDoubleComplex **complexScreen){
 		P->evaluate_derivative(alpha, &valD); //CRASHES
 
 		complexScreen[x][y] = cuCsub(complexScreen[x][y], cuCdiv(val, valD));  //CRASHES
-	}*/
+	}
 
-	for (int i = 0; i < SCREEN_WIDTH; i++)
+	/*for (int i = 0; i < SCREEN_WIDTH; i++)
 		for (int j = 0; j < SCREEN_HEIGHT; j++) {
 			cuDoubleComplex alpha = complexScreen[i][j];
 
@@ -199,5 +195,5 @@ void performNewtonStep(Polynomial *P, cuDoubleComplex **complexScreen){
 			complexScreen[i][j] = cuCsub(complexScreen[i][j], cuCdiv(val, valD));  //CRASHES
 
 			//-----*complexScreen[i][j] -= (P->evaluate(alpha)/P->evaluate_derivative(alpha));
-		}
+		}*/
 }
