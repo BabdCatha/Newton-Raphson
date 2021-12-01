@@ -2,17 +2,16 @@
 // Created by BabdCatha on 19/10/2021.
 //
 
-#include "Scale.h"
+#include "Scale.cuh"
 
-Scale::Scale(std::complex<double> cent, double w, double h, int screenWidth, int screenHeight) {
-	center = cent;
+Scale::Scale(cuDoubleComplex cent, double w, double h, int screenWidth, int screenHeight) : center(cent) {
 	width = w;
 	height = h;
 	this->screenWidth = screenWidth;
 	this->screenHeight = screenHeight;
 }
 
-const std::complex<double> &Scale::getCenter() const {
+const cuDoubleComplex &Scale::getCenter() const {
 	return center;
 }
 

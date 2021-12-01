@@ -5,29 +5,29 @@
 //It is therefore represented at first in a factorized way. It is expanded in the computeCoefficients method, in order
 //to simplify the calculation and evaluation of its derivative.
 
-#ifndef NEWTON_RAPHSON_POLYNOMIAL_H
-#define NEWTON_RAPHSON_POLYNOMIAL_H
+#ifndef NEWTON_RAPHSON_POLYNOMIAL_CUH
+#define NEWTON_RAPHSON_POLYNOMIAL_CUH
 
-#include "Root.h"
+#include "Root.cuh"
 
 class Polynomial {
 private:
 	int degree;
 	Root * roots;
-	std::complex<double> * coefficients;
+	cuDoubleComplex * coefficients;
 	bool isLeftMouseButtonPressed = false;
 
 	void computeCoefficients();
 public:
 	Polynomial(int degree, Root * rootsList);
-	std::complex<double> evaluate(std::complex<double> x);
-	std::complex<double> evaluate_derivative(std::complex<double> x);
+	__device__ void evaluate(cuDoubleComplex x, cuDoubleComplex *res);
+	__device__ void evaluate_derivative(cuDoubleComplex x, cuDoubleComplex *res);
 	bool getIsLeftMouseButtonPressed() const;
 	void leftMouseButtonPressed(sf::Event event);
 	void leftMouseButtonReleased();
 	void update(sf::Event event);
 	void drawRoots();
-	sf::Color findClosestRootColor(std::complex<double> z);
+	sf::Color findClosestRootColor(cuDoubleComplex z);
 };
 
-#endif //NEWTON_RAPHSON_POLYNOMIAL_H
+#endif //NEWTON_RAPHSON_POLYNOMIAL_CUH

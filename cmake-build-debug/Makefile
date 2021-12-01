@@ -129,101 +129,101 @@ Newton_Raphson/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/build
 .PHONY : Newton_Raphson/fast
 
-Polynomial.o: Polynomial.cpp.o
+Polynomial.o: Polynomial.cu.o
 .PHONY : Polynomial.o
 
 # target to build an object file
-Polynomial.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Polynomial.cpp.o
-.PHONY : Polynomial.cpp.o
+Polynomial.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Polynomial.cu.o
+.PHONY : Polynomial.cu.o
 
-Polynomial.i: Polynomial.cpp.i
+Polynomial.i: Polynomial.cu.i
 .PHONY : Polynomial.i
 
 # target to preprocess a source file
-Polynomial.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Polynomial.cpp.i
-.PHONY : Polynomial.cpp.i
+Polynomial.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Polynomial.cu.i
+.PHONY : Polynomial.cu.i
 
-Polynomial.s: Polynomial.cpp.s
+Polynomial.s: Polynomial.cu.s
 .PHONY : Polynomial.s
 
 # target to generate assembly for a file
-Polynomial.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Polynomial.cpp.s
-.PHONY : Polynomial.cpp.s
+Polynomial.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Polynomial.cu.s
+.PHONY : Polynomial.cu.s
 
-Root.o: Root.cpp.o
+Root.o: Root.cu.o
 .PHONY : Root.o
 
 # target to build an object file
-Root.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Root.cpp.o
-.PHONY : Root.cpp.o
+Root.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Root.cu.o
+.PHONY : Root.cu.o
 
-Root.i: Root.cpp.i
+Root.i: Root.cu.i
 .PHONY : Root.i
 
 # target to preprocess a source file
-Root.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Root.cpp.i
-.PHONY : Root.cpp.i
+Root.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Root.cu.i
+.PHONY : Root.cu.i
 
-Root.s: Root.cpp.s
+Root.s: Root.cu.s
 .PHONY : Root.s
 
 # target to generate assembly for a file
-Root.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Root.cpp.s
-.PHONY : Root.cpp.s
+Root.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Root.cu.s
+.PHONY : Root.cu.s
 
-Scale.o: Scale.cpp.o
+Scale.o: Scale.cu.o
 .PHONY : Scale.o
 
 # target to build an object file
-Scale.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Scale.cpp.o
-.PHONY : Scale.cpp.o
+Scale.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Scale.cu.o
+.PHONY : Scale.cu.o
 
-Scale.i: Scale.cpp.i
+Scale.i: Scale.cu.i
 .PHONY : Scale.i
 
 # target to preprocess a source file
-Scale.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Scale.cpp.i
-.PHONY : Scale.cpp.i
+Scale.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Scale.cu.i
+.PHONY : Scale.cu.i
 
-Scale.s: Scale.cpp.s
+Scale.s: Scale.cu.s
 .PHONY : Scale.s
 
 # target to generate assembly for a file
-Scale.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Scale.cpp.s
-.PHONY : Scale.cpp.s
+Scale.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/Scale.cu.s
+.PHONY : Scale.cu.s
 
-main.o: main.cpp.o
+main.o: main.cu.o
 .PHONY : main.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/main.cpp.o
-.PHONY : main.cpp.o
+main.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/main.cu.o
+.PHONY : main.cu.o
 
-main.i: main.cpp.i
+main.i: main.cu.i
 .PHONY : main.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/main.cpp.i
-.PHONY : main.cpp.i
+main.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/main.cu.i
+.PHONY : main.cu.i
 
-main.s: main.cpp.s
+main.s: main.cu.s
 .PHONY : main.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/main.cpp.s
-.PHONY : main.cpp.s
+main.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Newton_Raphson.dir/build.make CMakeFiles/Newton_Raphson.dir/main.cu.s
+.PHONY : main.cu.s
 
 # Help Target
 help:

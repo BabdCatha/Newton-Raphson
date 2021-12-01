@@ -66,78 +66,105 @@ include CMakeFiles/Newton_Raphson.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Newton_Raphson.dir/flags.make
 
-CMakeFiles/Newton_Raphson.dir/main.cpp.o: CMakeFiles/Newton_Raphson.dir/flags.make
-CMakeFiles/Newton_Raphson.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/media/cyril/Disque local/Bidouillage/Newton-Raphson/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Newton_Raphson.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Newton_Raphson.dir/main.cpp.o -c "/media/cyril/Disque local/Bidouillage/Newton-Raphson/main.cpp"
+CMakeFiles/Newton_Raphson.dir/main.cu.o: CMakeFiles/Newton_Raphson.dir/flags.make
+CMakeFiles/Newton_Raphson.dir/main.cu.o: ../main.cu
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/media/cyril/Disque local/Bidouillage/Newton-Raphson/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object CMakeFiles/Newton_Raphson.dir/main.cu.o"
+	/usr/local/cuda-11.5/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -x cu -dc "/media/cyril/Disque local/Bidouillage/Newton-Raphson/main.cu" -o CMakeFiles/Newton_Raphson.dir/main.cu.o
 
-CMakeFiles/Newton_Raphson.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Newton_Raphson.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/media/cyril/Disque local/Bidouillage/Newton-Raphson/main.cpp" > CMakeFiles/Newton_Raphson.dir/main.cpp.i
+CMakeFiles/Newton_Raphson.dir/main.cu.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/Newton_Raphson.dir/main.cu.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_PREPROCESSED_SOURCE
 
-CMakeFiles/Newton_Raphson.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Newton_Raphson.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/media/cyril/Disque local/Bidouillage/Newton-Raphson/main.cpp" -o CMakeFiles/Newton_Raphson.dir/main.cpp.s
+CMakeFiles/Newton_Raphson.dir/main.cu.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/Newton_Raphson.dir/main.cu.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
 
-CMakeFiles/Newton_Raphson.dir/Root.cpp.o: CMakeFiles/Newton_Raphson.dir/flags.make
-CMakeFiles/Newton_Raphson.dir/Root.cpp.o: ../Root.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/media/cyril/Disque local/Bidouillage/Newton-Raphson/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Newton_Raphson.dir/Root.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Newton_Raphson.dir/Root.cpp.o -c "/media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.cpp"
+CMakeFiles/Newton_Raphson.dir/Root.cu.o: CMakeFiles/Newton_Raphson.dir/flags.make
+CMakeFiles/Newton_Raphson.dir/Root.cu.o: ../Root.cu
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/media/cyril/Disque local/Bidouillage/Newton-Raphson/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CUDA object CMakeFiles/Newton_Raphson.dir/Root.cu.o"
+	/usr/local/cuda-11.5/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -x cu -dc "/media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.cu" -o CMakeFiles/Newton_Raphson.dir/Root.cu.o
 
-CMakeFiles/Newton_Raphson.dir/Root.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Newton_Raphson.dir/Root.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.cpp" > CMakeFiles/Newton_Raphson.dir/Root.cpp.i
+CMakeFiles/Newton_Raphson.dir/Root.cu.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/Newton_Raphson.dir/Root.cu.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_PREPROCESSED_SOURCE
 
-CMakeFiles/Newton_Raphson.dir/Root.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Newton_Raphson.dir/Root.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.cpp" -o CMakeFiles/Newton_Raphson.dir/Root.cpp.s
+CMakeFiles/Newton_Raphson.dir/Root.cu.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/Newton_Raphson.dir/Root.cu.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
 
-CMakeFiles/Newton_Raphson.dir/Scale.cpp.o: CMakeFiles/Newton_Raphson.dir/flags.make
-CMakeFiles/Newton_Raphson.dir/Scale.cpp.o: ../Scale.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/media/cyril/Disque local/Bidouillage/Newton-Raphson/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Newton_Raphson.dir/Scale.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Newton_Raphson.dir/Scale.cpp.o -c "/media/cyril/Disque local/Bidouillage/Newton-Raphson/Scale.cpp"
+CMakeFiles/Newton_Raphson.dir/Scale.cu.o: CMakeFiles/Newton_Raphson.dir/flags.make
+CMakeFiles/Newton_Raphson.dir/Scale.cu.o: ../Scale.cu
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/media/cyril/Disque local/Bidouillage/Newton-Raphson/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CUDA object CMakeFiles/Newton_Raphson.dir/Scale.cu.o"
+	/usr/local/cuda-11.5/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -x cu -dc "/media/cyril/Disque local/Bidouillage/Newton-Raphson/Scale.cu" -o CMakeFiles/Newton_Raphson.dir/Scale.cu.o
 
-CMakeFiles/Newton_Raphson.dir/Scale.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Newton_Raphson.dir/Scale.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/media/cyril/Disque local/Bidouillage/Newton-Raphson/Scale.cpp" > CMakeFiles/Newton_Raphson.dir/Scale.cpp.i
+CMakeFiles/Newton_Raphson.dir/Scale.cu.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/Newton_Raphson.dir/Scale.cu.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_PREPROCESSED_SOURCE
 
-CMakeFiles/Newton_Raphson.dir/Scale.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Newton_Raphson.dir/Scale.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/media/cyril/Disque local/Bidouillage/Newton-Raphson/Scale.cpp" -o CMakeFiles/Newton_Raphson.dir/Scale.cpp.s
+CMakeFiles/Newton_Raphson.dir/Scale.cu.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/Newton_Raphson.dir/Scale.cu.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
 
-CMakeFiles/Newton_Raphson.dir/Polynomial.cpp.o: CMakeFiles/Newton_Raphson.dir/flags.make
-CMakeFiles/Newton_Raphson.dir/Polynomial.cpp.o: ../Polynomial.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/media/cyril/Disque local/Bidouillage/Newton-Raphson/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Newton_Raphson.dir/Polynomial.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Newton_Raphson.dir/Polynomial.cpp.o -c "/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.cpp"
+CMakeFiles/Newton_Raphson.dir/Polynomial.cu.o: CMakeFiles/Newton_Raphson.dir/flags.make
+CMakeFiles/Newton_Raphson.dir/Polynomial.cu.o: ../Polynomial.cu
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/media/cyril/Disque local/Bidouillage/Newton-Raphson/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CUDA object CMakeFiles/Newton_Raphson.dir/Polynomial.cu.o"
+	/usr/local/cuda-11.5/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -x cu -dc "/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.cu" -o CMakeFiles/Newton_Raphson.dir/Polynomial.cu.o
 
-CMakeFiles/Newton_Raphson.dir/Polynomial.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Newton_Raphson.dir/Polynomial.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.cpp" > CMakeFiles/Newton_Raphson.dir/Polynomial.cpp.i
+CMakeFiles/Newton_Raphson.dir/Polynomial.cu.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/Newton_Raphson.dir/Polynomial.cu.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_PREPROCESSED_SOURCE
 
-CMakeFiles/Newton_Raphson.dir/Polynomial.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Newton_Raphson.dir/Polynomial.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.cpp" -o CMakeFiles/Newton_Raphson.dir/Polynomial.cpp.s
+CMakeFiles/Newton_Raphson.dir/Polynomial.cu.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CUDA source to assembly CMakeFiles/Newton_Raphson.dir/Polynomial.cu.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
 
 # Object files for target Newton_Raphson
 Newton_Raphson_OBJECTS = \
-"CMakeFiles/Newton_Raphson.dir/main.cpp.o" \
-"CMakeFiles/Newton_Raphson.dir/Root.cpp.o" \
-"CMakeFiles/Newton_Raphson.dir/Scale.cpp.o" \
-"CMakeFiles/Newton_Raphson.dir/Polynomial.cpp.o"
+"CMakeFiles/Newton_Raphson.dir/main.cu.o" \
+"CMakeFiles/Newton_Raphson.dir/Root.cu.o" \
+"CMakeFiles/Newton_Raphson.dir/Scale.cu.o" \
+"CMakeFiles/Newton_Raphson.dir/Polynomial.cu.o"
 
 # External object files for target Newton_Raphson
 Newton_Raphson_EXTERNAL_OBJECTS =
 
-Newton_Raphson: CMakeFiles/Newton_Raphson.dir/main.cpp.o
-Newton_Raphson: CMakeFiles/Newton_Raphson.dir/Root.cpp.o
-Newton_Raphson: CMakeFiles/Newton_Raphson.dir/Scale.cpp.o
-Newton_Raphson: CMakeFiles/Newton_Raphson.dir/Polynomial.cpp.o
+CMakeFiles/Newton_Raphson.dir/cmake_device_link.o: CMakeFiles/Newton_Raphson.dir/main.cu.o
+CMakeFiles/Newton_Raphson.dir/cmake_device_link.o: CMakeFiles/Newton_Raphson.dir/Root.cu.o
+CMakeFiles/Newton_Raphson.dir/cmake_device_link.o: CMakeFiles/Newton_Raphson.dir/Scale.cu.o
+CMakeFiles/Newton_Raphson.dir/cmake_device_link.o: CMakeFiles/Newton_Raphson.dir/Polynomial.cu.o
+CMakeFiles/Newton_Raphson.dir/cmake_device_link.o: CMakeFiles/Newton_Raphson.dir/build.make
+CMakeFiles/Newton_Raphson.dir/cmake_device_link.o: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1
+CMakeFiles/Newton_Raphson.dir/cmake_device_link.o: /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1
+CMakeFiles/Newton_Raphson.dir/cmake_device_link.o: /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1
+CMakeFiles/Newton_Raphson.dir/cmake_device_link.o: CMakeFiles/Newton_Raphson.dir/dlink.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/media/cyril/Disque local/Bidouillage/Newton-Raphson/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CUDA device code CMakeFiles/Newton_Raphson.dir/cmake_device_link.o"
+	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Newton_Raphson.dir/dlink.txt --verbose=$(VERBOSE)
+
+# Rule to build all files generated by this target.
+CMakeFiles/Newton_Raphson.dir/build: CMakeFiles/Newton_Raphson.dir/cmake_device_link.o
+.PHONY : CMakeFiles/Newton_Raphson.dir/build
+
+# Object files for target Newton_Raphson
+Newton_Raphson_OBJECTS = \
+"CMakeFiles/Newton_Raphson.dir/main.cu.o" \
+"CMakeFiles/Newton_Raphson.dir/Root.cu.o" \
+"CMakeFiles/Newton_Raphson.dir/Scale.cu.o" \
+"CMakeFiles/Newton_Raphson.dir/Polynomial.cu.o"
+
+# External object files for target Newton_Raphson
+Newton_Raphson_EXTERNAL_OBJECTS =
+
+Newton_Raphson: CMakeFiles/Newton_Raphson.dir/main.cu.o
+Newton_Raphson: CMakeFiles/Newton_Raphson.dir/Root.cu.o
+Newton_Raphson: CMakeFiles/Newton_Raphson.dir/Scale.cu.o
+Newton_Raphson: CMakeFiles/Newton_Raphson.dir/Polynomial.cu.o
 Newton_Raphson: CMakeFiles/Newton_Raphson.dir/build.make
 Newton_Raphson: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1
 Newton_Raphson: /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1
 Newton_Raphson: /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1
+Newton_Raphson: CMakeFiles/Newton_Raphson.dir/cmake_device_link.o
 Newton_Raphson: CMakeFiles/Newton_Raphson.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/media/cyril/Disque local/Bidouillage/Newton-Raphson/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Newton_Raphson"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/media/cyril/Disque local/Bidouillage/Newton-Raphson/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking CUDA executable Newton_Raphson"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Newton_Raphson.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -3,12 +3,9 @@
 //
 
 #include <iostream>
-#include "Root.h"
+#include "Root.cuh"
 
-using namespace std::complex_literals;
-
-Root::Root(int coordX, int coordY, const Scale &scale, sf::RenderWindow * window, sf::Color color) : coordX(coordX), coordY(coordY), scale(scale){
-	value = XYtoComplex(coordX, coordY);
+Root::Root(int coordX, int coordY, const Scale &scale, sf::RenderWindow * window, sf::Color color) : value(XYtoComplex(coordX, coordY)), coordX(coordX), coordY(coordY), scale(scale){
 	this->window = window;
 	sprite = sf::CircleShape(ROOT_RADIUS);
 	rootColor = color;
@@ -17,8 +14,7 @@ Root::Root(int coordX, int coordY, const Scale &scale, sf::RenderWindow * window
 	selected = false;
 }
 
-Root::Root(std::complex<double> z, const Scale &scale, sf::RenderWindow * window, sf::Color color) : scale(scale){
-	value = z;
+Root::Root(cuDoubleComplex z, const Scale &scale, sf::RenderWindow * window, sf::Color color) : value(z), scale(scale){
 	int * res = complextoXY(z, this->scale);
 	coordX = res[0];
 	coordY = res[1];
@@ -30,8 +26,7 @@ Root::Root(std::complex<double> z, const Scale &scale, sf::RenderWindow * window
 	selected = false;
 }
 
-Root::Root() : scale(0, 1, 1, 1920, 1080){
-	value = 0;
+Root::Root() : value(make_cuDoubleComplex(0, 0)), scale(make_cuDoubleComplex(0, 0), 1, 1, 1920, 1080){
 	coordX = 0;
 	coordY = 0;
 	this->window = nullptr;
@@ -68,14 +63,18 @@ void Root::setSelected(bool n_selected) {
 	Root::selected = n_selected;
 }
 
-std::complex<double> Root::getValue() {
+cuDoubleComplex Root::getValue() {
 	return value;
 }
 
-std::complex<double> Root::XYtoComplex(int x, int y) {
-	std::complex<double> res = scale.getCenter();
-	res += (x - (scale.getScreenWidth() / 2)) * (2 * (double)scale.getWidth() / (double)scale.getScreenWidth());
-	res += 1i * ((scale.getScreenHeight() / 2) - y) * (2 * (double)scale.getHeight() / (double)scale.getScreenHeight());
+cuDoubleComplex Root::XYtoComplex(int x, int y) {
+	cuDoubleComplex res = scale.getCenter();
+	//res += (x - (scale.getScreenWidth() / 2)) * (2 * (double)scale.getWidth() / (double)scale.getScreenWidth());
+	//res += 1i * ((scale.getScreenHeight() / 2) - y) * (2 * (double)scale.getHeight() / (double)scale.getScreenHeight());
+
+	res = cuCadd(res, make_cuDoubleComplex((x - (scale.getScreenWidth() / 2)) * (2 * (double)scale.getWidth() / (double)scale.getScreenWidth()), 0));
+	res = cuCadd(res, make_cuDoubleComplex(0, ((scale.getScreenHeight() / 2) - y) * (2 * (double)scale.getHeight() / (double)scale.getScreenHeight())));
+
 	return res;
 }
 
@@ -83,10 +82,11 @@ sf::Color Root::getRootColor() {
 	return rootColor;
 }
 
-int * Root::complextoXY(std::complex<double> z, Scale &scale){
+int * Root::complextoXY(cuDoubleComplex z, Scale &scaleParameter){
 	int * res = (int*)malloc(2*sizeof(int));
-	res[0] = ((z.real()/scale.getWidth())*scale.getScreenWidth()) + scale.getScreenWidth()/2;
-	res[1] = ((z.imag()/scale.getHeight())*scale.getScreenHeight()) + scale.getScreenHeight()/2;
+
+	res[0] = static_cast<int>(cuCreal(z) / scaleParameter.getWidth() * scaleParameter.getScreenWidth() + scaleParameter.getScreenWidth() / 2);
+	res[1] = static_cast<int>(cuCimag(z) / scaleParameter.getHeight() * scaleParameter.getScreenHeight() + scaleParameter.getScreenHeight() / 2);
 
 	return res;
 }

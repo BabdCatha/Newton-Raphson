@@ -1,0 +1,60 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.cu
+iostream
+-
+Polynomial.cuh
+/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.cuh
+
+/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.cuh
+Root.cuh
+/media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.cuh
+
+/media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.cuh
+cuComplex.h
+-
+SFML/Window.hpp
+-
+SFML/Graphics.hpp
+-
+Scale.cuh
+/media/cyril/Disque local/Bidouillage/Newton-Raphson/Scale.cuh
+
+/media/cyril/Disque local/Bidouillage/Newton-Raphson/Scale.cuh
+cuComplex.h
+-
+
+/media/cyril/Disque local/Bidouillage/Newton-Raphson/main.cu
+SFML/Graphics.hpp
+-
+SFML/Window.hpp
+-
+cuComplex.h
+-
+c++/10/iostream
+-
+Root.cuh
+/media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.cuh
+Scale.cuh
+/media/cyril/Disque local/Bidouillage/Newton-Raphson/Scale.cuh
+Polynomial.cuh
+/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.cuh
+
+/usr/local/cuda-11.5/include/crt/host_defines.h
+
+/usr/local/cuda-11.5/include/cuComplex.h
+math.h
+-
+vector_types.h
+/usr/local/cuda-11.5/include/vector_types.h
+
+/usr/local/cuda-11.5/include/vector_types.h
+crt/host_defines.h
+/usr/local/cuda-11.5/include/crt/host_defines.h
+

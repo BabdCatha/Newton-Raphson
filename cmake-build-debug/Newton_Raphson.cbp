@@ -44,13 +44,14 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/usr/local/cuda-11.5/include"/>
+					<Add directory="/usr/include"/>
 					<Add directory="/usr/include/c++/10"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/10"/>
 					<Add directory="/usr/include/c++/10/backward"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/10/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
 					<Build command="/usr/bin/gmake -j8 -f &quot;/media/cyril/Disque\ local/Bidouillage/Newton-Raphson/cmake-build-debug/Makefile&quot;  VERBOSE=1 Newton_Raphson"/>
@@ -66,13 +67,14 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/usr/local/cuda-11.5/include"/>
+					<Add directory="/usr/include"/>
 					<Add directory="/usr/include/c++/10"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/10"/>
 					<Add directory="/usr/include/c++/10/backward"/>
 					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/10/include"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
 					<Build command="/usr/bin/gmake -j8 -f &quot;/media/cyril/Disque\ local/Bidouillage/Newton-Raphson/cmake-build-debug/Makefile&quot;  VERBOSE=1 Newton_Raphson/fast"/>
@@ -82,25 +84,25 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.cpp">
+		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.cu">
 			<Option target="Newton_Raphson"/>
 		</Unit>
-		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.h">
+		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.cuh">
 			<Option target="Newton_Raphson"/>
 		</Unit>
-		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.cpp">
+		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.cu">
 			<Option target="Newton_Raphson"/>
 		</Unit>
-		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.h">
+		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.cuh">
 			<Option target="Newton_Raphson"/>
 		</Unit>
-		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/Scale.cpp">
+		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/Scale.cu">
 			<Option target="Newton_Raphson"/>
 		</Unit>
-		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/Scale.h">
+		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/Scale.cuh">
 			<Option target="Newton_Raphson"/>
 		</Unit>
-		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/main.cpp">
+		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/main.cu">
 			<Option target="Newton_Raphson"/>
 		</Unit>
 		<Unit filename="/media/cyril/Disque local/Bidouillage/Newton-Raphson/CMakeLists.txt">
