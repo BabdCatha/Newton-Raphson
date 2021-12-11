@@ -4,14 +4,14 @@
 
 #include "Scale.cuh"
 
-Scale::Scale(cuDoubleComplex cent, double w, double h, int screenWidth, int screenHeight) : center(cent) {
+Scale::Scale(cuFloatComplex cent, double w, double h, int screenWidth, int screenHeight) : center(cent) {
 	width = w;
 	height = h;
 	this->screenWidth = screenWidth;
 	this->screenHeight = screenHeight;
 }
 
-const cuDoubleComplex &Scale::getCenter() const {
+const cuFloatComplex &Scale::getCenter() const {
 	return center;
 }
 

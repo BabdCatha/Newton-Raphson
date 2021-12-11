@@ -6,17 +6,17 @@
 #include "Polynomial.cuh"
 
 __device__
-cuDoubleComplex expRap(cuDoubleComplex x, int i){
+cuFloatComplex expRap(cuFloatComplex x, int i){
 	if(i==0){
-		return make_cuDoubleComplex(1, 0);
+		return make_cuFloatComplex(1, 0);
 	}else if(i == 1){
 		return x;
 	}else if(i%2 == 0){
-		cuDoubleComplex temp = expRap(x, i/2);
-		return cuCmul(temp, temp);
+		cuFloatComplex temp = expRap(x, i/2);
+		return cuCmulf(temp, temp);
 	}else{
-		cuDoubleComplex temp = expRap(x, i/2);
-		return cuCmul(x, cuCmul(temp, temp));
+		cuFloatComplex temp = expRap(x, i/2);
+		return cuCmulf(x, cuCmulf(temp, temp));
 	}
 }
 
@@ -27,53 +27,53 @@ Polynomial::Polynomial(int degree, Root * rootsList) {
 		roots[i] = rootsList[i];
 	}
 	//coefficients = new cuDoubleComplex[degree+1];
-	cudaMallocManaged(&coefficients, (degree+1)*sizeof(cuDoubleComplex));
+	cudaMallocManaged(&coefficients, (degree+1)*sizeof(cuFloatComplex));
 	computeCoefficients();
 }
 
 __device__
-void Polynomial::evaluate(cuDoubleComplex x, cuDoubleComplex *res) {
-	*res = make_cuDoubleComplex(0, 0);
+void Polynomial::evaluate(cuFloatComplex x, cuFloatComplex *res) {
+	*res = make_cuFloatComplex(0, 0);
 	for(int i = 0; i < degree+1; i++){
 		//res += coefficients[i] * expRap(x, i);
-		*res = cuCadd(*res, cuCmul(coefficients[i], expRap(x, i)));
+		*res = cuCaddf(*res, cuCmulf(coefficients[i], expRap(x, i)));
 	}
 }
 
 __device__
-void Polynomial::evaluate_derivative(cuDoubleComplex x, cuDoubleComplex *res) {
-	*res = make_cuDoubleComplex(0, 0);
+void Polynomial::evaluate_derivative(cuFloatComplex x, cuFloatComplex *res) {
+	*res = make_cuFloatComplex(0, 0);
 	for(int i = 1; i < degree+1; i++){
 		//res += ((double)i*coefficients[i] * std::pow(x, i-1));
-		*res = cuCadd(*res, cuCmul(make_cuDoubleComplex(i, 0), cuCmul(coefficients[i], expRap(x, i-1))));
+		*res = cuCaddf(*res, cuCmulf(make_cuFloatComplex(i, 0), cuCmulf(coefficients[i], expRap(x, i-1))));
 	}
 }
 
 void Polynomial::computeCoefficients(){
 
 	for(int i = 0; i < degree+1; i++){
-		coefficients[i] = make_cuDoubleComplex(0, 0);
+		coefficients[i] = make_cuFloatComplex(0, 0);
 	}
 
-	coefficients[1] = make_cuDoubleComplex(1, 0);
+	coefficients[1] = make_cuFloatComplex(1, 0);
 	//coefficients[0] = (double)-1*roots[0].getValue();
-	coefficients[0] = cuCmul(make_cuDoubleComplex(-1, 0), roots[0].getValue());
+	coefficients[0] = cuCmulf(make_cuFloatComplex(-1, 0), roots[0].getValue());
 
-	cuDoubleComplex tempList[degree+1];
+	cuFloatComplex tempList[degree+1];
 
 	for(int i = 1; i < degree; i++){
 
 		for(int j = 1; j < degree+1 ; j++){
 			tempList[j] = coefficients[j-1];
 		}
-		tempList[0] = make_cuDoubleComplex(0, 0);
+		tempList[0] = make_cuFloatComplex(0, 0);
 
 		for(int j = 0; j < degree+1; j++){
 			//coefficients[j] *= (double)-1*roots[i].getValue();
 			//coefficients[j] += tempList[j];
 
-			coefficients[j] = cuCmul(coefficients[j],cuCmul(make_cuDoubleComplex(-1, 0), roots[i].getValue()));
-			coefficients[j] = cuCadd(coefficients[j],tempList[j]);
+			coefficients[j] = cuCmulf(coefficients[j],cuCmulf(make_cuFloatComplex(-1, 0), roots[i].getValue()));
+			coefficients[j] = cuCaddf(coefficients[j],tempList[j]);
 		}
 	}
 }
@@ -94,7 +94,7 @@ void Polynomial::leftMouseButtonPressed(sf::Event event) {
 	}
 	//Debug code
 	for(int i = 0; i < degree+1; i++){
-		std::cout << i << " : " << cuCreal(coefficients[i]) << "+i" << cuCimag(coefficients[i]) << std::endl;
+		std::cout << i << " : " << cuCrealf(coefficients[i]) << "+i" << cuCimagf(coefficients[i]) << std::endl;
 	}
 }
 
@@ -123,12 +123,12 @@ void Polynomial::drawRoots() {
 	}
 }
 
-sf::Color Polynomial::findClosestRootColor(cuDoubleComplex z){
+sf::Color Polynomial::findClosestRootColor(cuFloatComplex z){
 	double dist = HUGE_VAL;
 	sf::Color res;
 	for(int i = 0; i < degree; i++){
 		//double new_dist = std::abs(z - roots[i].getValue());
-		double new_dist = cuCabs(cuCsub(z, roots[i].getValue()));
+		double new_dist = cuCabsf(cuCsubf(z, roots[i].getValue()));
 		if(new_dist < dist){
 			dist = new_dist;
 			res = roots[i].getRootColor();

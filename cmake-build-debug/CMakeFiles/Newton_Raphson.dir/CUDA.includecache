@@ -6,12 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.cu
-iostream
--
-Polynomial.cuh
-/media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.cuh
-
 /media/cyril/Disque local/Bidouillage/Newton-Raphson/Polynomial.cuh
 Root.cuh
 /media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.cuh
@@ -36,8 +30,6 @@ SFML/Graphics.hpp
 SFML/Window.hpp
 -
 cuComplex.h
--
-c++/10/iostream
 -
 Root.cuh
 /media/cyril/Disque local/Bidouillage/Newton-Raphson/Root.cuh

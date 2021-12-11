@@ -42,7 +42,7 @@ CMAKE_COLOR_MAKEFILE:BOOL=ON
 CMAKE_CUDA_ARCHITECTURES:STRING=52
 
 //CUDA compiler
-CMAKE_CUDA_COMPILER:FILEPATH=/usr/local/cuda-11.5/bin/nvcc
+CMAKE_CUDA_COMPILER:STRING=/usr/local/cuda-11.5/bin/nvcc
 
 //Flags used by the CUDA compiler during all build types.
 CMAKE_CUDA_FLAGS:STRING=
@@ -60,7 +60,7 @@ CMAKE_CUDA_FLAGS_RELEASE:STRING=
 CMAKE_CUDA_FLAGS_RELWITHDEBINFO:STRING=
 
 //CXX compiler
-CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++
+CMAKE_CXX_COMPILER:STRING=/usr/bin/c++
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -390,6 +390,9 @@ CUDA_rt_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/librt.a
 Newton_Raphson_BINARY_DIR:STATIC=/media/cyril/Disque local/Bidouillage/Newton-Raphson/cmake-build-debug
 
 //Value Computed by CMake
+Newton_Raphson_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
 Newton_Raphson_SOURCE_DIR:STATIC=/media/cyril/Disque local/Bidouillage/Newton-Raphson
 
 //Path to a program.
@@ -418,9 +421,9 @@ CMAKE_CACHEFILE_DIR:INTERNAL=/media/cyril/Disque local/Bidouillage/Newton-Raphso
 //Major version of cmake used to create the current loaded cache
 CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=20
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=21
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=2
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=1
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
@@ -545,7 +548,7 @@ CMAKE_RANLIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_READELF
 CMAKE_READELF-ADVANCED:INTERNAL=1
 //Path to CMake installation.
-CMAKE_ROOT:INTERNAL=/usr/local/clion-2021.2.1/bin/cmake/linux/share/cmake-3.20
+CMAKE_ROOT:INTERNAL=/usr/local/clion-2021.2.1/bin/cmake/linux/share/cmake-3.21
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS
 CMAKE_SHARED_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_DEBUG
@@ -642,7 +645,7 @@ CUDA_cusolver_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CUDA_cusparse_LIBRARY
 CUDA_cusparse_LIBRARY-ADVANCED:INTERNAL=1
 //Location of make2cmake.cmake
-CUDA_make2cmake:INTERNAL=/usr/local/clion-2021.2.1/bin/cmake/linux/share/cmake-3.20/Modules/FindCUDA/make2cmake.cmake
+CUDA_make2cmake:INTERNAL=/usr/local/clion-2021.2.1/bin/cmake/linux/share/cmake-3.21/Modules/FindCUDA/make2cmake.cmake
 //ADVANCED property for variable: CUDA_nppc_LIBRARY
 CUDA_nppc_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CUDA_nppial_LIBRARY
@@ -668,9 +671,9 @@ CUDA_npps_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CUDA_nvToolsExt_LIBRARY
 CUDA_nvToolsExt_LIBRARY-ADVANCED:INTERNAL=1
 //Location of parse_cubin.cmake
-CUDA_parse_cubin:INTERNAL=/usr/local/clion-2021.2.1/bin/cmake/linux/share/cmake-3.20/Modules/FindCUDA/parse_cubin.cmake
+CUDA_parse_cubin:INTERNAL=/usr/local/clion-2021.2.1/bin/cmake/linux/share/cmake-3.21/Modules/FindCUDA/parse_cubin.cmake
 //Location of run_nvcc.cmake
-CUDA_run_nvcc:INTERNAL=/usr/local/clion-2021.2.1/bin/cmake/linux/share/cmake-3.20/Modules/FindCUDA/run_nvcc.cmake
+CUDA_run_nvcc:INTERNAL=/usr/local/clion-2021.2.1/bin/cmake/linux/share/cmake-3.21/Modules/FindCUDA/run_nvcc.cmake
 //Details about finding CUDA
 FIND_PACKAGE_MESSAGE_DETAILS_CUDA:INTERNAL=[/usr/local/cuda-11.5][/usr/local/cuda-11.5/bin/nvcc][/usr/local/cuda-11.5/include][/usr/local/cuda-11.5/lib64/libcudart_static.a][v11.5()]
 //Details about finding Threads

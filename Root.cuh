@@ -22,22 +22,22 @@ class Root {
 private:
 	//(X,Y) = (0,0) corresponds to top left corner of the screen
 	int coordX, coordY;
-	cuDoubleComplex value;
+	cuFloatComplex value;
 	Scale scale;
 	sf::RenderWindow * window;
 	sf::CircleShape sprite;
 	bool selected;
 	sf::Color rootColor;
-	static int * complextoXY(cuDoubleComplex z, Scale &scale);
-	cuDoubleComplex XYtoComplex(int x, int y);
+	static int * complextoXY(cuFloatComplex z, Scale &scale);
+	cuFloatComplex XYtoComplex(int x, int y);
 public:
 	bool isSelected() const;
 	void setSelected(bool n_selected);
 	Root(int coordX, int coordY, const Scale &scale, sf::RenderWindow * window, sf::Color color);
-	Root(cuDoubleComplex z, const Scale &scale, sf::RenderWindow * window, sf::Color color);
+	Root(cuFloatComplex z, const Scale &scale, sf::RenderWindow * window, sf::Color color);
 	Root();
 	void draw();
-	cuDoubleComplex getValue();
+	cuFloatComplex getValue();
 	bool overlaps(int e_x, int e_y) const;
 	void updatePosition(int n_x, int n_y);
 	sf::Color getRootColor();

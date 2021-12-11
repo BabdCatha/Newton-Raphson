@@ -12,18 +12,18 @@
 
 class Scale {
 private:
-	cuDoubleComplex center;
+	cuFloatComplex center;
 	double width;
 	double height;
 	int screenWidth;
 	int screenHeight;
 public:
-	const cuDoubleComplex &getCenter() const;
+	const cuFloatComplex &getCenter() const;
 	double getWidth() const;
 	double getHeight() const;
 	double getScreenWidth() const;
 	double getScreenHeight() const;
-	Scale(cuDoubleComplex cent, double w, double h, int screenWidth, int screenHeight);
+	Scale(cuFloatComplex cent, double w, double h, int screenWidth, int screenHeight);
 };
 
 #endif //NEWTON_RAPHSON_SCALE_CUH
