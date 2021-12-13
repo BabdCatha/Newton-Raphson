@@ -4,7 +4,7 @@
 
 #include "Scale.cuh"
 
-Scale::Scale(cuFloatComplex cent, double w, double h, int screenWidth, int screenHeight) : center(cent) {
+Scale::Scale(cuFloatComplex cent, float w, float h, int screenWidth, int screenHeight) : center(cent) {
 	width = w;
 	height = h;
 	this->screenWidth = screenWidth;
@@ -15,19 +15,39 @@ const cuFloatComplex &Scale::getCenter() const {
 	return center;
 }
 
-double Scale::getWidth() const {
+__device__
+const cuFloatComplex &Scale::getCenterD() const {
+	return center;
+}
+
+float Scale::getWidth() const {
 	return width;
 }
 
-double Scale::getHeight() const {
+float Scale::getHeight() const {
 	return height;
 }
 
-double Scale::getScreenWidth() const {
+int Scale::getScreenWidth() const {
 	return screenWidth;
 }
 
-double Scale::getScreenHeight() const {
+int Scale::getScreenHeight() const {
 	return screenHeight;
 }
 
+__device__ float Scale::getWidthD() const {
+	return width;
+}
+
+__device__ float Scale::getHeightD() const {
+	return height;
+}
+
+__device__ int Scale::getScreenWidthD() const {
+	return screenWidth;
+}
+
+__device__ int Scale::getScreenHeightD() const {
+	return screenHeight;
+}

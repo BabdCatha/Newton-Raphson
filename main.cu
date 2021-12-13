@@ -13,8 +13,8 @@
 #define NUMBER_OF_ITERATIONS 15
 //#define BASE_DEGREE 3
 
-cuFloatComplex XYtoComplex(int x, int y, Scale &scale);
-void initScreen(Scale &scale, cuFloatComplex **complexScreen);
+__device__ cuFloatComplex XYtoComplex(unsigned int x, unsigned int y, Scale &scale);
+__global__ void initScreen(Scale &scale, cuFloatComplex **complexScreen);
 void getColorMap(Polynomial *P, cuFloatComplex **complexScreen, sf::Image *image);
 __global__ void performNewtonStep(Polynomial *P, cuFloatComplex **complexScreen);
 
@@ -46,14 +46,16 @@ int main(){
 	backgroundSprite.setTexture(backgroundTexture);
 
 	//Creating the current scale
-	Scale currentScale(make_cuFloatComplex(0, 0), 1*5, 1*2.8125, SCREEN_WIDTH, SCREEN_HEIGHT);
+	Scale *currentScale;
+	cudaMallocManaged(&currentScale, sizeof(Scale));
+	*currentScale = Scale(make_cuFloatComplex(0, 0), 1*5, 1*2.8125, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	//Test variables
-	Root z1(make_cuFloatComplex(1, 0), currentScale, &window, sf::Color(0, 0, 255));
-	Root z2(make_cuFloatComplex(-0.5, 0.86602540378443), currentScale, &window, sf::Color(255, 0, 0));
-	Root z3(make_cuFloatComplex(-0.5, -0.86602540378443), currentScale, &window, sf::Color(0, 255, 0));
-	Root z4(100, 400, currentScale, &window, sf::Color(61, 15, 97));
-	Root z5(100, 500, currentScale, &window, sf::Color(97, 15, 72));
+	Root z1(make_cuFloatComplex(1, 0), *currentScale, &window, sf::Color(0, 0, 255));
+	Root z2(make_cuFloatComplex(-0.5, 0.86602540378443), *currentScale, &window, sf::Color(255, 0, 0));
+	Root z3(make_cuFloatComplex(-0.5, -0.86602540378443), *currentScale, &window, sf::Color(0, 255, 0));
+	Root z4(100, 400, *currentScale, &window, sf::Color(61, 15, 97));
+	Root z5(100, 500, *currentScale, &window, sf::Color(97, 15, 72));
 
 	Root liste[] = {z1, z2, z3};
 
@@ -89,12 +91,16 @@ int main(){
 
 			//If we want to re-draw the background, on a right click
 			if(event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Right){
-				initScreen(currentScale, complexScreen);
 
 				for(int i = 0; i < SCREEN_WIDTH; i++){
 					cudaMemPrefetchAsync(complexScreen[i], SCREEN_HEIGHT*sizeof(cuFloatComplex), 0);
 				}
 				cudaMemPrefetchAsync(complexScreen, SCREEN_WIDTH*sizeof(cuFloatComplex*), 0);
+
+				cudaDeviceSynchronize();
+
+				//Initializing the screen, assigning complex values to pixels based on the current scale
+				initScreen<<<numBlocks, blockSize>>>(*currentScale, complexScreen);
 
 				cudaDeviceSynchronize();
 
@@ -135,21 +141,30 @@ int main(){
 	return 0;
 }
 
-cuFloatComplex XYtoComplex(int x, int y, Scale &scale) {
+__device__
+cuFloatComplex XYtoComplex(unsigned int x, unsigned int y, Scale &scale) {
 
-	cuFloatComplex res = scale.getCenter();
+	cuFloatComplex res = scale.getCenterD();
 
-	res = cuCaddf(res, make_cuFloatComplex((x - (scale.getScreenWidth() / 2)) * (2 * (double)scale.getWidth() / (double)scale.getScreenWidth()), 0));
-	res = cuCaddf(res, make_cuFloatComplex(0, ((scale.getScreenHeight() / 2) - y) * (2 * (double)scale.getHeight() / (double)scale.getScreenHeight())));
+	res = cuCaddf(res, make_cuFloatComplex(((float)x - ((float)scale.getScreenWidthD() / 2)) * (2 * (float)scale.getWidthD() / (float)scale.getScreenWidthD()), 0));
+	res = cuCaddf(res, make_cuFloatComplex(0, (((float)scale.getScreenHeightD() / 2) - (float)y) * (2 * (float)scale.getHeightD() / (float)scale.getScreenHeightD())));
 
 	return res;
 }
 
-void initScreen(Scale &scale, cuFloatComplex **complexScreen){
-	for (int i = 0; i < SCREEN_WIDTH; i++)
-		for (int j = 0; j < SCREEN_HEIGHT; j++) {
-			complexScreen[i][j] = XYtoComplex(i, j, scale);
-		}
+__global__ void initScreen(Scale &scale, cuFloatComplex **complexScreen){
+	unsigned int index = blockIdx.x * blockDim.x + threadIdx.x;
+	unsigned int stride = blockDim.x * gridDim.x;
+
+	for(unsigned int i = index; i < SCREEN_WIDTH*SCREEN_HEIGHT; i += stride){
+
+		unsigned int x = i%SCREEN_WIDTH;
+		unsigned int y = i/SCREEN_WIDTH;
+
+		complexScreen[x][y] = XYtoComplex(x, y, scale);
+
+	}
+
 }
 
 void getColorMap(Polynomial *P, cuFloatComplex **complexScreen, sf::Image *image){

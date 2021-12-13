@@ -13,17 +13,23 @@
 class Scale {
 private:
 	cuFloatComplex center;
-	double width;
-	double height;
+	float width;
+	float height;
 	int screenWidth;
 	int screenHeight;
 public:
 	const cuFloatComplex &getCenter() const;
-	double getWidth() const;
-	double getHeight() const;
-	double getScreenWidth() const;
-	double getScreenHeight() const;
-	Scale(cuFloatComplex cent, double w, double h, int screenWidth, int screenHeight);
+	float getWidth() const;
+	float getHeight() const;
+	int getScreenWidth() const;
+	int getScreenHeight() const;
+	Scale(cuFloatComplex cent, float w, float h, int screenWidth, int screenHeight);
+
+	__device__ const cuFloatComplex  &getCenterD() const;
+	__device__ float getWidthD() const;
+	__device__ float getHeightD() const;
+	__device__ int getScreenWidthD() const;
+	__device__ int getScreenHeightD() const;
 };
 
 #endif //NEWTON_RAPHSON_SCALE_CUH
